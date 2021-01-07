@@ -15,13 +15,21 @@ public class TalkEvent extends Talk {
         this.duration = duration;
     }
 
+    public TalkEvent(String title, Calendar startHour) {
+        this.title = title;
+        this.startHour = startHour;
+        this.duration = 0;
+    }
+
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mma");
+        // different formats 12H hh - 24H HH - AM/PM text ´a´ at the end
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mma");
+
         if (getDuration() == 5)
             return sdf.format(getStartHour().getTime()) + " " + getTitle() + " " + ConferenceConfig.LIGHTNING_TIME + "min";
         else
-            return sdf.format(getStartHour().getTime()) + " " + getTitle() + " " + getDuration() + "min";
+            return sdf.format(getStartHour().getTime()) + " " + getTitle() + " " + (getDuration() == 0 ? "" : getDuration() + "min");
     }
 
     public String getTitle() {
