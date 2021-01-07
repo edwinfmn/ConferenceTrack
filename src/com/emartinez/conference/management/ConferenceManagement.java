@@ -39,7 +39,7 @@ public class ConferenceManagement {
             return;
         }
 
-        // organize all talks readed from input file.
+        // schedule or organize all talks readed from input file.
         scheduleTalks(talks);
 
         // show final Conference Schedule

@@ -1,5 +1,7 @@
 package com.emartinez.conference.model;
 
+import com.emartinez.conference.config.ConferenceConfig;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -16,7 +18,10 @@ public class TalkEvent extends Talk {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mma");
-        return sdf.format(getStartHour().getTime()) + " " + getTitle() + " " + getDuration() + "min";
+        if (getDuration() == 5)
+            return sdf.format(getStartHour().getTime()) + " " + getTitle() + " " + ConferenceConfig.LIGHTNING_TIME + "min";
+        else
+            return sdf.format(getStartHour().getTime()) + " " + getTitle() + " " + getDuration() + "min";
     }
 
     public String getTitle() {

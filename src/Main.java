@@ -1,5 +1,4 @@
-package com.emartinez;
-
+import com.emartinez.conference.exception.ConferenceOriginException;
 import com.emartinez.conference.management.ConferenceManagement;
 import com.emartinez.conference.model.Talk;
 import com.emartinez.conference.util.ConferenceUtil;
@@ -11,19 +10,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Talk> talkList = null;
+        List<Talk> talkList;
 
         ConferenceUtil util = new ConferenceUtil();
 
         try {
             talkList = util.readInput();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | ConferenceOriginException e) {
+            System.err.println(e.getMessage());
             return;
         }
 
-        if(talkList.isEmpty() || talkList.size() == 0) {
+        if(talkList.isEmpty()) {
             System.err.println("Input File doesn't have any talk. Please check the input information.");
-            return;
         } else {
             ConferenceManagement cm = new ConferenceManagement();
             try {
@@ -32,9 +31,6 @@ public class Main {
                 e.printStackTrace();
             }
         }
-
-
-
 
     }
 }
