@@ -1,6 +1,6 @@
-package com.emartinez.conference.config;
+package main.emartinez.conference.config;
 
-import com.emartinez.conference.util.ConferenceUtil;
+import main.emartinez.conference.util.ConferenceUtil;
 
 import java.util.Calendar;
 

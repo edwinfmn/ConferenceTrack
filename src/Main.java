@@ -1,11 +1,17 @@
-import com.emartinez.conference.exception.ConferenceOriginException;
-import com.emartinez.conference.management.ConferenceManagement;
-import com.emartinez.conference.model.Talk;
-import com.emartinez.conference.util.ConferenceUtil;
+import main.emartinez.conference.config.ConferenceConfig;
+import main.emartinez.conference.exception.ConferenceOriginException;
+import main.emartinez.conference.management.ConferenceManagement;
+import main.emartinez.conference.model.Talk;
+import main.emartinez.conference.util.ConferenceUtil;
 
 import java.io.FileNotFoundException;
 import java.util.List;
 
+/**
+ * Main class to execute rad Talks file and print them into a Conference Schedule
+ *
+ * @author Edwin Martinez
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -15,7 +21,7 @@ public class Main {
         ConferenceUtil util = new ConferenceUtil();
 
         try {
-            talkList = util.readInput();
+            talkList = util.readInput(ConferenceConfig.TALKS_FILE);
         } catch (FileNotFoundException | ConferenceOriginException e) {
             System.err.println(e.getMessage());
             return;

@@ -1,4 +1,4 @@
-package com.emartinez.conference.model;
+package main.emartinez.conference.model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,6 +9,7 @@ public class Session {
     public List<TalkEvent> events;
     public Calendar startTime;
     public int remainingTime;
+    public Calendar endTime;
 
     public Session(Calendar startTime, int remainingTime) {
         this.events = new ArrayList<>();
@@ -49,4 +50,11 @@ public class Session {
         this.remainingTime = remainingTime;
     }
 
+    public Calendar getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Calendar endTime) {
+        this.endTime = endTime;
+    }
 }

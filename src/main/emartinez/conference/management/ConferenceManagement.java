@@ -1,13 +1,12 @@
-package com.emartinez.conference.management;
+package main.emartinez.conference.management;
 
-import com.emartinez.conference.config.ConferenceConfig;
-import com.emartinez.conference.exception.ConferenceOriginException;
-import com.emartinez.conference.model.*;
-import com.emartinez.conference.util.ConferenceUtil;
-import com.emartinez.conference.util.TalksComparator;
+import main.emartinez.conference.config.ConferenceConfig;
+import main.emartinez.conference.exception.ConferenceOriginException;
+import main.emartinez.conference.model.*;
+import main.emartinez.conference.util.ConferenceUtil;
+import main.emartinez.conference.util.TalksComparator;
 
 import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -30,7 +29,7 @@ public class ConferenceManagement {
 
         ConferenceUtil util = new ConferenceUtil();
         try {
-            talks = util.readInput();
+            talks = util.readInput(ConferenceConfig.TALKS_FILE);
         } catch (FileNotFoundException e) {
             System.err.println("Input file not found: " + ConferenceConfig.TALKS_FILE);
             return;
@@ -72,11 +71,11 @@ public class ConferenceManagement {
                     ConferenceConfig.AFTERNOON_SESSION_TIME);
             assignTalksToSession(afternoonSession, talks);
 
-            Session networking = new Session(ConferenceConfig.SESSION_NETWORKING_START,
+            Session networking = new Session(afternoonSession.endTime,
                     ConferenceConfig.NETWORKING_SESSION_TIME);
-            networking.addTalkOrEvent(new NetworkingEvent());
+            networking.addTalkOrEvent(new NetworkingEvent(afternoonSession.endTime));
 
-
+            // create Trask for each day and assign sessions (morning and afternoon)
             Track track = new Track(++dayCount);
             List<Session> sessions = new ArrayList<>();
             sessions.add(morningSession);
@@ -84,7 +83,7 @@ public class ConferenceManagement {
             sessions.add(afternoonSession);
             sessions.add(networking);
             track.setSessions(sessions);
-
+            // finally add a track to conference schedule
             conference.addTrack(track);
         }
 
@@ -100,12 +99,13 @@ public class ConferenceManagement {
         for (Iterator<Talk> talksIterator = talks.iterator(); talksIterator.hasNext();) {
             Talk talk = talksIterator.next();
             if (session.fitsInSessionTime(talk)) {
-                // add an talk event to the session at the currentStartTime calculated.
+                // add talk event to the session at the currentStartTime calculated.
                 session.addTalkOrEvent(new TalkEvent(talk.getTitle(), currentStartTime, talk.getDuration()));
                 // calculate the next start time based on the current start time and current talk duration.
                 currentStartTime = ConferenceUtil.nextTalkTime(currentStartTime, talk);
                 // remove the talk from the list. This means that the talk has been scheduled in the conference.
                 talksIterator.remove();
+                session.setEndTime(currentStartTime);
             }
         }
     }

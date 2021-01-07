@@ -1,4 +1,4 @@
-package com.emartinez.conference.exception;
+package main.emartinez.conference.exception;
 
 /**
  * @author Edwin Martinez

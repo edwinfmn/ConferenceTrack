@@ -1,0 +1,7 @@
+# Talks input empty file test
+
+// comment
+
+
+
+

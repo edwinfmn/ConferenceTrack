@@ -1,4 +1,4 @@
-package com.emartinez.conference.model;
+package main.emartinez.conference.model;
 
 public class Talk {
 

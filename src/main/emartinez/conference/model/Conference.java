@@ -1,4 +1,4 @@
-package com.emartinez.conference.model;
+package main.emartinez.conference.model;
 
 import java.util.ArrayList;
 import java.util.List;

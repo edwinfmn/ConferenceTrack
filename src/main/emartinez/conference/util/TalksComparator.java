@@ -1,6 +1,6 @@
-package com.emartinez.conference.util;
+package main.emartinez.conference.util;
 
-import com.emartinez.conference.model.Talk;
+import main.emartinez.conference.model.Talk;
 
 import java.util.Comparator;
 

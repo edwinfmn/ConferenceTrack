@@ -1,8 +1,8 @@
-package com.emartinez.conference.util;
+package main.emartinez.conference.util;
 
-import com.emartinez.conference.config.ConferenceConfig;
-import com.emartinez.conference.exception.ConferenceOriginException;
-import com.emartinez.conference.model.Talk;
+import main.emartinez.conference.config.ConferenceConfig;
+import main.emartinez.conference.exception.ConferenceOriginException;
+import main.emartinez.conference.model.Talk;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -36,15 +36,14 @@ public class ConferenceUtil {
         return newTime;
     }
 
-    public List<Talk> readInput() throws FileNotFoundException, ConferenceOriginException {
+    public List<Talk> readInput(String fileName) throws FileNotFoundException, ConferenceOriginException {
         FileInputStream inputStream;
         List<Talk> talks = new ArrayList<>();
-        String fileName = ConferenceConfig.TALKS_FILE;
 
         try {
             inputStream = new FileInputStream(fileName);
         } catch (FileNotFoundException e) {
-            System.err.println("Input file not found: " + ConferenceConfig.TALKS_FILE);
+            System.err.println("Input file not found: " + fileName);
             throw e;
         }
 
@@ -52,8 +51,8 @@ public class ConferenceUtil {
         String txtLine;
         int durationMin;
 
-        // Leemos línea por línea del archivo
         try {
+            // Leemos línea por línea del archivo
             while ((txtLine = bufferedReader.readLine()) != null) {
                 // evitar líneas vacías o con comentarios
                 if (txtLine.startsWith("#") || txtLine.startsWith("//") || txtLine.isEmpty())
@@ -76,7 +75,6 @@ public class ConferenceUtil {
                 Talk talk = new Talk(name, durationMin);
                 talks.add(talk);
             }
-
         } catch (Exception e) {
             throw new ConferenceOriginException("Conference Origin file is not readable");
         } finally {
