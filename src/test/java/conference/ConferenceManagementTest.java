@@ -1,8 +1,8 @@
-package test.emartinez.conference;
+package conference;
 
-import main.emartinez.conference.exception.ConferenceOriginException;
-import main.emartinez.conference.model.Talk;
-import main.emartinez.conference.util.ConferenceUtil;
+import emartinez.conference.exception.ConferenceOriginException;
+import emartinez.conference.model.Talk;
+import emartinez.conference.util.ConferenceUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,17 +21,17 @@ public class ConferenceManagementTest {
 
     @Test(expected = FileNotFoundException.class)
     public void testFileInputNotFound() throws FileNotFoundException, ConferenceOriginException {
-        List<Talk> talks = util.readInput("talks-test-1.txt");
+        List<Talk> talks = util.readInput("classes/talks-test-1.txt");
     }
 
     @Test
     public void testGetTalksEmptyFile() throws FileNotFoundException, ConferenceOriginException {
-        List<Talk> talks = util.readInput("talks-empty.txt");
+        List<Talk> talks = util.readInput("classes/talks-empty.txt");
         Assert.assertEquals(0, talks.size());
     }
 
     @Test(expected = ConferenceOriginException.class)
     public void testGetTalksInvalidFile() throws FileNotFoundException, ConferenceOriginException {
-        List<Talk> talks = util.readInput("talks-invalid.txt");
+        List<Talk> talks = util.readInput("classes/talks-invalid.txt");
     }
 }

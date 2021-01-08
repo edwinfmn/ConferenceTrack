@@ -2,7 +2,7 @@
 
 _Conference Track Management - Prueba técnica Java_
 
-### Desarrollado con Java 8
+### Desarrollado con Java 8 y Maven
 
 ## Diseño
 
@@ -19,13 +19,11 @@ Se considera el texto del ejercicio (ver final) para definir el diseño de la si
 **Talk:** Definicion de una unidad de charla, tiene un título y una duración de la misma en minutos.
 
 
-## Compilación y Ejecución
+## Ejecución
 
 _Pre requisito: Java 8_
 
-Descargar el código fuente con cualquier IDE y ejecutar clase Main.java ubicada en src/Main
-
-### Para ejecutar y compilar desde una consola de comandos Linux / MacOS
+Descargar el código fuente con cualquier IDE 
 
 Descargar código
 ```
@@ -36,14 +34,14 @@ Compilar
 ```
 cd ConferenceTrack/
 
-javac -d classes/ -sourcepath src src/Main.java
+mvn clean
+
+mvn package
 ```
 
 Ejecutar
 ```
-cd classes/
-
-java Main
+java -cp target/ConferenceTrack-1.0-SNAPSHOT.jar Main
 ```
 
 ## Descripción del ejercicio resuelto

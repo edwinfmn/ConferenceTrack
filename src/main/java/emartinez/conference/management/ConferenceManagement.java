@@ -1,10 +1,10 @@
-package main.emartinez.conference.management;
+package emartinez.conference.management;
 
-import main.emartinez.conference.config.ConferenceConfig;
-import main.emartinez.conference.exception.ConferenceOriginException;
-import main.emartinez.conference.model.*;
-import main.emartinez.conference.util.ConferenceUtil;
-import main.emartinez.conference.util.TalksComparator;
+import emartinez.conference.config.ConferenceConfig;
+import emartinez.conference.exception.ConferenceOriginException;
+import emartinez.conference.model.*;
+import emartinez.conference.util.ConferenceUtil;
+import emartinez.conference.util.TalksComparator;
 
 import java.io.FileNotFoundException;
 import java.util.*;

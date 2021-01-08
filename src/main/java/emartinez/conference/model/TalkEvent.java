@@ -1,6 +1,6 @@
-package main.emartinez.conference.model;
+package emartinez.conference.model;
 
-import main.emartinez.conference.config.ConferenceConfig;
+import emartinez.conference.config.ConferenceConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -1,8 +1,8 @@
-package main.emartinez.conference.util;
+package emartinez.conference.util;
 
-import main.emartinez.conference.config.ConferenceConfig;
-import main.emartinez.conference.exception.ConferenceOriginException;
-import main.emartinez.conference.model.Talk;
+import emartinez.conference.config.ConferenceConfig;
+import emartinez.conference.exception.ConferenceOriginException;
+import emartinez.conference.model.Talk;
 
 import java.io.*;
 import java.util.ArrayList;

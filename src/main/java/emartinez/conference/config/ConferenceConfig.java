@@ -1,6 +1,6 @@
-package main.emartinez.conference.config;
+package emartinez.conference.config;
 
-import main.emartinez.conference.util.ConferenceUtil;
+import emartinez.conference.util.ConferenceUtil;
 
 import java.util.Calendar;
 
@@ -11,7 +11,7 @@ import java.util.Calendar;
  */
 public class ConferenceConfig {
     // Input Talks File
-    public static final String TALKS_FILE = "talks.txt";
+    public static final String TALKS_FILE = "classes/talks.txt";
     public static final String LIGHTNING = "lightning";
 
     // Standard/Fixed times
